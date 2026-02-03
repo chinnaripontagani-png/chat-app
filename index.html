@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My First Chat</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    #chatBox {
+      background: white;
+      height: 300px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+    input {
+      width: 70%;
+      padding: 10px;
+    }
+    button {
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>My Chat App</h2>
+
+  <div id="chatBox"></div>
+
+  <input type="text" id="message" placeholder="Type your message..." onkeydown="if(event.key==='Enter'){sendMessage()}" />
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    function sendMessage() {
+      var msg = document.getElementById("message").value;
+      if (msg.trim() === "") return;
+
+      var chatBox = document.getElementById("chatBox");
+      chatBox.innerHTML += "<p><b>You:</b> " + msg + "</p>";
+      document.getElementById("message").value = "";
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
